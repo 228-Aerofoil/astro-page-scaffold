@@ -1,0 +1,11 @@
+{
+	"deploymentDefaultName": "cloudflare-page-astro-scaffold",
+	"todos": [],
+	"scaffoldScriptLocation": "./scaffold.mjs",
+	"databaseRequirements": [],
+	"deploymentType": "",
+	"requiredExtensions": [],
+	"version": "1.0.0",
+	"aerofoilVersion": "0.5.0",
+	"name": "cloudflare-page-astro-scaffold"
+}

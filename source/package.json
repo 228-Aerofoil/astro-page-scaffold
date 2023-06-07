@@ -1,0 +1,28 @@
+{
+	"name": "astro-test",
+	"version": "1.0.0",
+	"private": true,
+	"scripts": {
+		"typecheck": "tsc --noEmit",
+		"lint": "npx eslint src/**/*.ts",
+		"lint:fix": "npx eslint --fix src/**/*.ts",
+		"dev": "astro dev",
+		"build": "astro build",
+		"preview": "aerofoil port-runner \"wrangler pages dev ./dist --port {port}\"",
+		"start": "aerofoil no-op",
+		"deploy:production": "aerofoil deploy --local-package --production",
+		"deploy:branch": "aerofoil deploy --local-package --branch"
+	},
+	"devDependencies": {
+		"@aerofoil/af-ext-cloudflare": "^0.5.0",
+		"eslint": "^7.23.0",
+		"eslint-config-aerofoil": "workspace:*",
+		"tsconfig": "workspace:*",
+		"typescript": "^5.0.2",
+		"wrangler": "^2.13.0"
+	},
+	"dependencies": {
+		"@astrojs/cloudflare": "^6.2.2",
+		"astro": "^2.6.0"
+	}
+}
