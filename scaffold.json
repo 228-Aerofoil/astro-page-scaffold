@@ -6,6 +6,6 @@
 	"deploymentType": "",
 	"requiredExtensions": [],
 	"version": "1.0.0",
-	"aerofoilVersion": "0.5.0",
+	"aerofoilVersion": "0.7.0",
 	"name": "cloudflare-page-astro-scaffold"
 }
