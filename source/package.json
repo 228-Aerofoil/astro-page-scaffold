@@ -1,9 +1,9 @@
 {
-	"name": "astro-test",
+	"name": "@@name@@",
 	"version": "1.0.0",
 	"private": true,
 	"scripts": {
-		"typecheck": "tsc --noEmit",
+		"typecheck": "astro check & tsc --noEmit",
 		"lint": "npx eslint src/**/*.ts",
 		"lint:fix": "npx eslint --fix src/**/*.ts",
 		"dev": "astro dev",

@@ -1,9 +1,10 @@
 {
 	"extends": "tsconfig/solid-cf-page.json",
-	"include": [".eslintrc.js", "astro.config.ts", "src/**/*"],
+	"include": [".eslintrc.js", "astro.config.mjs", "src/**/*"],
 	"exclude": ["node_modules"],
 	"compilerOptions": {
 		"baseUrl": "./",
+		"checkJs": true,
 		"paths": {
 			"~/*": ["./src/*"]
 		}
