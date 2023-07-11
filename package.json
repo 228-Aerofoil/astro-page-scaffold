@@ -1,5 +1,5 @@
 {
-	"name": "cloudflare-worker-hono-scaffold",
+	"name": "cloudflare-page-astro-scaffold",
 	"version": "1.0.0",
 	"description": "",
 	"main": "index.js",
@@ -7,8 +7,8 @@
 	"author": "228 - Michael Kassabov",
 	"license": "ISC",
 	"dependencies": {
-		"@aerofoil/aerofoil-core": "^0.6.3",
-		"@aerofoil/logger": "^0.6.3",
+		"@aerofoil/aerofoil-core": "^0.7.0",
+		"@aerofoil/logger": "^0.7.0",
 		"fs-extra": "^11.1.1"
 	}
 }
