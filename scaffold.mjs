@@ -1,3 +1,4 @@
+import { getProjectConfig } from "@aerofoil/aerofoil-core/util/getProjectConfig";
 import { getProjectRootPath } from "@aerofoil/aerofoil-core/util/getProjectRootPath";
 import { exec } from "@aerofoil/aerofoil-core/util/exec";
 import { logger } from "@aerofoil/logger";
@@ -35,8 +36,9 @@ async function replaceStyleIntegration(
       i++;
     }
     lines.splice(i, 0, imp);
+    newAstroConfig = lines.join("\n");
   }
-  await fs.writeFile(astroConfigPath, newAstroConfig);
+  await fs.writeFile(astroConfigPath, newAstroConfig, "utf8");
 }
 
 export async function scaffold({
@@ -45,6 +47,7 @@ export async function scaffold({
   deploymentTypes,
   addTodos,
 }) {
+  const projectConfig = await getProjectConfig();
   const rootPath = await getProjectRootPath();
   const deployInfo = await generateDeploymentInfo(null, {
     deployment: { type: "cloudflare-page" },
@@ -74,7 +77,12 @@ export async function scaffold({
       //* add to astro.config.mjs
       setupStyle = async () => {
         await exec(
-          "npm i -D unocss @unocss/preset-web-fonts @unocss/preset-wind @unocss/reset"
+          "pnpm i -D unocss @unocss/preset-web-fonts @unocss/preset-wind @unocss/reset",
+          {
+            execOptions: {
+              cwd: deploymentRootPath,
+            },
+          }
         );
         await fs.copyFile(
           path.resolve(templateDirectory, "unocss", "uno.config.ts"),
@@ -83,14 +91,14 @@ export async function scaffold({
         await replaceStyleIntegration(
           astroConfigPath,
           `
-UnoCSS({
-	injectReset: true,
-	content: {
-		pipeline: {
-			exclude: [/\?astro/],
-		},
-	},
-}),`,
+		UnoCSS({
+			injectReset: true,
+			content: {
+				pipeline: {
+					exclude: [/\?astro/],
+				},
+			},
+		}),`,
           ['import UnoCSS from "unocss/astro";']
         );
       };
@@ -115,16 +123,17 @@ UnoCSS({
     },
     {
       text: "Setup style library",
-      promise: setupStyle,
+      promise: async () => {
+        await setupStyle();
+      },
     },
     {
       text: "Adding deployment info",
       promise: async () => {
-        await fs.copy(sourceDirectory, deploymentRootPath);
         const packageJSON = await fs.readJSON(
           path.resolve(deploymentRootPath, "package.json")
         );
-        packageJSON.name = deployInfo.name;
+        packageJSON.name = `@${projectConfig.name}/${deployInfo.name}`;
         await fs.writeJSON(
           path.resolve(deploymentRootPath, "package.json"),
           packageJSON,
@@ -132,6 +141,12 @@ UnoCSS({
             spaces: "\t",
           }
         );
+        const astroConfig = await fs.readFile(astroConfigPath, "utf8");
+        let newAstroConfig = astroConfig.replace(
+          "@@site-url@@",
+          `https://${deployInfo?.deployment?.routes?.[0] ?? ""}`
+        );
+        await fs.writeFile(astroConfigPath, newAstroConfig, "utf8");
         await fs.writeFile(
           astroConfigPath,
           (
