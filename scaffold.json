@@ -4,7 +4,9 @@
 	"scaffoldScriptLocation": "./scaffold.mjs",
 	"databaseRequirements": [],
 	"deploymentType": "",
-	"requiredExtensions": [],
+	"requiredExtensions": [
+		"@aerofoil/af-ext-cloudflare"
+	],
 	"version": "1.0.0",
 	"aerofoilVersion": "0.7.0",
 	"name": "cloudflare-page-astro-scaffold"

@@ -14,23 +14,23 @@ process.env = { ...process.env, ...env };
 
 // https://astro.build/config
 export default defineConfig({
-  site: "@@site-url@@",
-  output: "server",
-  outDir: "dist",
-  integrations: [
-    prefetch({
-      selector: "a",
-      throttle: 3,
-    }),
-    sitemap({
-      i18n: {
-        defaultLocale: "en",
-        locales: {
-          en: "en-US",
-        },
-      },
-    }),
-    "@@style-integration@@",
-  ],
-  adapter: cloudflare(),
+	site: "@@site-url@@",
+	output: "server",
+	outDir: "dist",
+	integrations: [
+		prefetch({
+			selector: "a",
+			throttle: 3,
+		}),
+		sitemap({
+			i18n: {
+				defaultLocale: "en",
+				locales: {
+					en: "en-US",
+				},
+			},
+		}),
+		"@@style-integration@@",
+	],
+	adapter: cloudflare(),
 });

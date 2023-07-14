@@ -7,8 +7,8 @@
 	"author": "228 - Michael Kassabov",
 	"license": "ISC",
 	"dependencies": {
-		"@aerofoil/aerofoil-core": "^0.7.0",
-		"@aerofoil/logger": "^0.7.0",
+		"@aerofoil/aerofoil-core": "link:D:/Code/228/aerofoil/aerofoil/libraries/aerofoil-core",
+		"@aerofoil/logger": "link:D:/Code/228/aerofoil/aerofoil/libraries/logger",
 		"fs-extra": "^11.1.1"
 	}
 }
