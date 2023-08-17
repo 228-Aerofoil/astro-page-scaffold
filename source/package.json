@@ -6,9 +6,9 @@
 		"typecheck": "astro check & tsc --noEmit",
 		"lint": "npx eslint src/**/*.ts",
 		"lint:fix": "npx eslint --fix src/**/*.ts",
-		"dev": "aerofoil port-runner \"astro dev --port {port}\"",
+		"dev": "aerofoil port-runner \"astro dev --port {port} --host\"",
 		"build": "astro build",
-		"preview": "aerofoil port-runner \"wrangler pages dev ./dist --port {port}\"",
+		"preview": "aerofoil port-runner \"wrangler pages dev ./dist --port {port} --host\"",
 		"start": "aerofoil no-op",
 		"deploy:production": "aerofoil deploy --local-package"
 	},
