@@ -1,15 +1,15 @@
 /// <reference types="astro/client" />
 
+import type { envValidation } from "astro.config.js";
 import type { ReadonlyDeep } from "type-fest";
 import type { z } from "zod";
-import type { envValidation } from "astro.config.js";
-
-type t = ReadonlyDeep<z.infer<typeof envValidation>>;
 
 //* we declare global because imports make it a module
+// eslint-disable-next-line no-restricted-syntax
 declare global {
-	interface ImportMetaEnv {}
+	interface ImportMetaEnv extends ReadonlyDeep<z.infer<typeof envValidation>> {}
 
+	// eslint-disable-next-line no-unused-vars
 	interface ImportMeta {
 		readonly env: ImportMetaEnv;
 	}

@@ -3,6 +3,7 @@
 	"include": [".eslintrc.js", "astro.config.mjs", "src/**/*"],
 	"exclude": ["node_modules"],
 	"compilerOptions": {
+		"noEmit": true,
 		"baseUrl": "./",
 		"checkJs": true,
 		"paths": {

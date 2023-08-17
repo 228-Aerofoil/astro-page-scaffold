@@ -22,7 +22,7 @@ async function replaceStyleIntegration(
 ) {
 	const astroConfig = await fs.readFile(astroConfigPath, "utf-8");
 	let newAstroConfig = astroConfig.replace(
-		'\n    "@@style-integration@@",',
+		'\n\t\t"@@style-integration@@",',
 		`${styleIntegrationCode}`
 	);
 	for (const imp of imports) {
@@ -88,6 +88,15 @@ export async function scaffold({
 					path.resolve(templateDirectory, "unocss", "uno.config.ts"),
 					path.resolve(deploymentRootPath, "uno.config.ts")
 				);
+				const tsConfig = await fs.readJSON(
+					path.resolve(deploymentRootPath, "tsconfig.json")
+				);
+				tsConfig.include.push("uno.config.ts");
+				await fs.writeJSON(
+					path.resolve(deploymentRootPath, "tsconfig.json"),
+					tsConfig,
+					{ spaces: "\t" }
+				);
 				await replaceStyleIntegration(
 					astroConfigPath,
 					`
@@ -95,7 +104,7 @@ export async function scaffold({
 			injectReset: true,
 			content: {
 				pipeline: {
-					exclude: [/\?astro/],
+					exclude: [/\\?astro/],
 				},
 			},
 		}),`,
@@ -137,9 +146,7 @@ export async function scaffold({
 				await fs.writeJSON(
 					path.resolve(deploymentRootPath, "package.json"),
 					packageJSON,
-					{
-						spaces: "\t",
-					}
+					{ spaces: "\t" }
 				);
 				const astroConfig = await fs.readFile(astroConfigPath, "utf8");
 				let newAstroConfig = astroConfig.replace(
