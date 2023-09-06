@@ -30,7 +30,10 @@ export default defineConfig({
 				},
 			},
 		}),
-		"@@style-integration@@",
+		@@astro-integrations@@
 	],
+	vite: {
+		plugins: [@@vite-plugins@@],
+	},
 	adapter: cloudflare(),
 });

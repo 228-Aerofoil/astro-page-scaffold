@@ -1,6 +1,6 @@
 /// <reference types="astro/client" />
 
-import type { envValidation } from "astro.config.js";
+import type { envValidation } from "astro.config.ts";
 import type { ReadonlyDeep } from "type-fest";
 import type { z } from "zod";
 

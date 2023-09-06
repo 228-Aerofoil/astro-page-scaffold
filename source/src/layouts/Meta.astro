@@ -1,0 +1,23 @@
+---
+interface Props {
+	title: string | undefined;
+	description: string | undefined;
+	bodyClass: string;
+}
+
+const { title, description, bodyClass } = Astro.props;
+---
+
+<html lang="en" class="scroll-smooth">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="generator" content={Astro.generator} />
+		{title != null ? <title>{title}</title> : null}
+		{description != null ? <meta name="description" content={description} /> : null}
+	</head>
+	<body class={bodyClass}>
+		<slot />
+	</body>
+</html>

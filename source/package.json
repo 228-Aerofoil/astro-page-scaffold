@@ -3,30 +3,53 @@
 	"version": "1.0.0",
 	"private": true,
 	"scripts": {
-		"typecheck": "astro check & tsc --noEmit",
+		"typecheck": "tsc --noEmit",
 		"lint": "npx eslint src/**/*.ts",
 		"lint:fix": "npx eslint --fix src/**/*.ts",
-		"dev": "aerofoil port-runner \"astro dev --port {port} --host\"",
-		"build": "astro build",
-		"preview": "aerofoil port-runner \"wrangler pages dev ./dist --port {port} --host\"",
-		"start": "aerofoil no-op",
-		"deploy:production": "aerofoil deploy --local-package"
+		"dev": "",
+		"build": "",
+		"preview": "",
+		"start": "",
+		"deploy:production": "aerofoil deploy --local-package --production",
+		"deploy:branch": "aerofoil deploy --local-package --branch"
 	},
+	"type": "module",
 	"devDependencies": {
 		"@aerofoil/aerofoil-core": "latest",
 		"@aerofoil/af-ext-cloudflare": "latest",
+		"@astrojs/check": "^0.2.0",
+		"eslint": "latest",
 		"eslint-config-aerofoil": "workspace:*",
 		"tsconfig": "workspace:*",
-		"eslint": "latest",
 		"type-fest": "latest",
 		"typescript": "latest",
-		"wrangler": "latest",
-		"zod": "^3.21.4"
+		"wrangler": "latest"
 	},
 	"dependencies": {
-		"@astrojs/cloudflare": "^6.6.1",
-		"@astrojs/prefetch": "^0.3.0",
-		"@astrojs/sitemap": "^1.3.3",
-		"astro": "^2.8.2"
+		"@astrojs/cloudflare": "^7.0.1",
+		"@astrojs/prefetch": "^0.4.0",
+		"@astrojs/sitemap": "^3.0.0",
+		"astro": "^3.0.8",
+		"zod": "v3.22.2"
+	},
+	"eslintConfig": {
+		"ignorePatterns": [
+			"dist"
+		],
+		"extends": [
+			"aerofoil/eslint-page-astro"
+		],
+		"parserOptions": {
+			"sourceType": "module",
+			"project": "./tsconfig.json"
+		},
+		"settings": {
+			"import/resolver": {
+				"typescript": {
+					"alwaysTryTypes": true,
+					"project": "./tsconfig.json"
+				}
+			}
+		}
 	}
 }
