@@ -7,6 +7,8 @@ const sourceDirectory = path.resolve(
 	"source",
 );
 
+const VALID_DEPLOYMENT_TYPES = ["@cloudflare/page"];
+
 export async function scaffold({
 	fs,
 	projectConfig,
@@ -14,21 +16,42 @@ export async function scaffold({
 	generateDeploymentInfo,
 	deploymentTypes,
 }) {
+	const imports = [];
+	const vitePlugins = [];
+	const astroIntegrations = [];
+	const dependencies = {};
+	const devDependencies = {};
+
+	const availableDeploymentTypes = Object.keys(deploymentTypes).filter((type) =>
+		VALID_DEPLOYMENT_TYPES.includes(type),
+	);
+
+	let type = null;
+	if (availableDeploymentTypes.length === 1) {
+		logger.info(`Creating deployment without: ${type}`);
+		type = availableDeploymentTypes[0];
+	} else if (availableDeploymentTypes.length > 1) {
+		type = await logger.listInput("Select deployment type", [
+			availableDeploymentTypes,
+		]);
+	} else {
+		logger.warn("Creating deployment without a deployment type");
+	}
+
 	const deployInfo = await generateDeploymentInfo(null, {
-		deployment: { type: "@cloudflare/page" },
+		...(type != null && {
+			deployment: {
+				type,
+			},
+		}),
 	});
+
 	const deploymentRootPath = path.resolve(
 		projectRootPath,
 		"deployments",
 		deployInfo.name,
 	);
 	const astroConfigPath = path.resolve(deploymentRootPath, "astro.config.ts");
-
-	const imports = [];
-	const vitePlugins = [];
-	const astroIntegrations = [];
-	const dependencies = {};
-	const devDependencies = {};
 
 	function chooseStyleFunc(styleOption) {
 		switch (styleOption) {

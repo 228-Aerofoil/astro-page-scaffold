@@ -1,13 +1,11 @@
 {
-	"deploymentDefaultName": "empty-scaffold",
+	"deploymentDefaultName": "astro-page",
 	"todos": [],
 	"scaffoldScriptLocation": "./scaffold.js",
 	"databaseRequirements": [],
 	"deploymentType": "",
-	"requiredExtensions": [
-		"@aerofoil/af-ext-cloudflare"
-	],
-	"version": "1.0.0",
+	"requiredExtensions": [],
+	"version": "2.0.0",
 	"aerofoilVersion": "0.8.0",
-	"name": "cloudflare-page-astro-scaffold"
+	"name": "astro-page-scaffold"
 }
