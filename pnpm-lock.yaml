@@ -11,6 +11,9 @@ dependencies:
   '@aerofoil/logger':
     specifier: latest
     version: 0.7.0
+  '@sinclair/typebox':
+    specifier: ^0.31.14
+    version: 0.31.14
   typescript:
     specifier: latest
     version: 5.2.2
@@ -37,6 +40,10 @@ packages:
     dependencies:
       chalk: 5.3.0
       strip-ansi: 7.1.0
+    dev: false
+
+  /@sinclair/typebox@0.31.14:
+    resolution: {integrity: sha512-2spk0ie6J/4r+nwb55OtBXUn5cZLF9S98fopIjuutBVoq8yLRNh+h8QvMkCjMu5gWBMnnZ/PUSXeHE3xGBPKLQ==}
     dev: false
 
   /ansi-regex@6.0.1:

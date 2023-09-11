@@ -29,8 +29,8 @@
 		"@astrojs/cloudflare": "^7.0.2",
 		"@astrojs/prefetch": "^0.4.0",
 		"@astrojs/sitemap": "^3.0.0",
-		"astro": "^3.0.12",
-		"zod": "v3.22.2"
+		"@sinclair/typebox": "latest",
+		"astro": "^3.0.12"
 	},
 	"eslintConfig": {
 		"ignorePatterns": [
