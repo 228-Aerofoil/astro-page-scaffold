@@ -7,13 +7,10 @@ settings:
 dependencies:
   '@aerofoil/aerofoil-core':
     specifier: latest
-    version: 0.7.0
+    version: 0.7.9
   '@aerofoil/logger':
     specifier: latest
-    version: 0.7.0
-  '@sinclair/typebox':
-    specifier: ^0.31.14
-    version: 0.31.14
+    version: 0.7.9
   typescript:
     specifier: latest
     version: 5.2.2
@@ -25,25 +22,25 @@ devDependencies:
 
 packages:
 
-  /@aerofoil/aerofoil-core@0.7.0:
-    resolution: {integrity: sha512-RafHkKomGvUHrH+o1Z+kRm4gG4NozKYawCy6PZ8D/TwlRb8DA/sxSno9Aooj9ngDvOYOlVXt3hkf45D4foU6UA==}
+  /@aerofoil/aerofoil-core@0.7.9:
+    resolution: {integrity: sha512-TomlSC9d2zgOdhbrXnnXuBbIwa+cugoNc12AItoJdbwNBzcyOI97tDqQ1rXQZzCkze59b1eizfjyAcgq1ITSzg==}
     dependencies:
-      '@aerofoil/logger': 0.7.0
+      '@aerofoil/logger': 0.7.9
+      '@sinclair/typebox': 0.31.15
       commander: 11.0.0
       path: 0.12.7
       url: 0.11.1
-      zod: 3.21.4
     dev: false
 
-  /@aerofoil/logger@0.7.0:
-    resolution: {integrity: sha512-pBk4myQTXHa6z5l1eSQ6ZSy/yAgDxL4xKZX6D4ilZ3x4NOPclFQ9ETG99m+cWmDhyBd/z8lgsRNBmOQsLJmPwQ==}
+  /@aerofoil/logger@0.7.9:
+    resolution: {integrity: sha512-zofK4yyndt4nRJWJxFxxwCVfzJPT8uyILPx4+eNuJZPfzEZ4F9Xtvpl0Y06kPLMAtBI9YhZgNXoxaHJvnVZ/XQ==}
     dependencies:
       chalk: 5.3.0
       strip-ansi: 7.1.0
     dev: false
 
-  /@sinclair/typebox@0.31.14:
-    resolution: {integrity: sha512-2spk0ie6J/4r+nwb55OtBXUn5cZLF9S98fopIjuutBVoq8yLRNh+h8QvMkCjMu5gWBMnnZ/PUSXeHE3xGBPKLQ==}
+  /@sinclair/typebox@0.31.15:
+    resolution: {integrity: sha512-gheE0Z2QWB/EuUwirniP+vq17N0MdQ+9bKyy2lPJzcBin6piBxOrazTYOB18N+oeBwVVepAmlqqo9KbpSl9DOA==}
     dev: false
 
   /ansi-regex@6.0.1:
@@ -167,8 +164,4 @@ packages:
     resolution: {integrity: sha512-0Pm9hTQ3se5ll1XihRic3FDIku70C+iHUdT/W926rSgHV5QgXsYbKZN8MSC3tJtSkhuROzvsQjAaFENRXr+19A==}
     dependencies:
       inherits: 2.0.3
-    dev: false
-
-  /zod@3.21.4:
-    resolution: {integrity: sha512-m46AKbrzKVzOzs/DZgVnG5H55N1sv1M8qZU3A8RIKbs3mrACDNeIOeilDymVb2HdmP8uwshOCF4uJ8uM9rCqJw==}
     dev: false

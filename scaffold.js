@@ -22,7 +22,7 @@ export async function scaffold({
 	const dependencies = {};
 	const devDependencies = {};
 
-	const availableDeploymentTypes = Object.keys(deploymentTypes).filter((type) =>
+	const availableDeploymentTypes = deploymentTypes.filter((type) =>
 		VALID_DEPLOYMENT_TYPES.includes(type),
 	);
 

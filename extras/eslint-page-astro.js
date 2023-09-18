@@ -42,6 +42,10 @@ module.exports = {
 		"astro/no-deprecated-astro-resolve": "error",
 		"astro/no-unused-define-vars-in-style": "error",
 		...base.rules,
+		"import/no-unresolved": [
+			"error",
+			{ ignore: ["astro:*", "virtual:uno.css"] },
+		],
 	},
 	settings: {
 		"import/parsers": {

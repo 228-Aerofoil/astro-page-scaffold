@@ -3,15 +3,11 @@ import cloudflare from "@astrojs/cloudflare";
 import prefetch from "@astrojs/prefetch";
 import sitemap from "@astrojs/sitemap";
 import { Type as t } from "@sinclair/typebox";
-import { TypeCompiler } from "@sinclair/typebox/compiler";
-import { defineConfig } from "astro/config";
+import { defineConfig, passthroughImageService } from "astro/config";
 
-// todo add t3-env: https://github.com/t3-oss/t3-env/blob/main/examples/astro/src/t3-env.ts
-export const envValidationSchema = t.Object({});
-const envValidation = TypeCompiler.Compile(envValidationSchema);
+export const envValidation = t.Object({});
 
-const env = await getTargetEnv<typeof envValidationSchema, typeof envValidation>(import.meta.url, envValidation);
-//@ts-ignore
+const env = await getTargetEnv<typeof envValidation>(import.meta.url, envValidation);
 process.env = { ...process.env, ...env };
 
 export type EnvType = typeof env;
@@ -38,6 +34,9 @@ export default defineConfig({
 	],
 	vite: {
 		plugins: [@@vite-plugins@@],
+	},
+	image: {
+		service: passthroughImageService(),
 	},
 	adapter: cloudflare(),
 });

@@ -10,14 +10,14 @@
 		"build": "astro build",
 		"preview": "aerofoil port-runner \"wrangler pages dev ./dist --port {port} --host\"",
 		"start": "aerofoil no-op",
-		"deploy:production": "aerofoil deploy --local-package --production",
-		"deploy:branch": "aerofoil deploy --local-package --branch"
+		"af:deploy": "aerofoil deploy --local-package"
 	},
 	"type": "module",
 	"devDependencies": {
 		"@aerofoil/aerofoil-core": "latest",
 		"@aerofoil/af-ext-cloudflare": "latest",
 		"@astrojs/check": "^0.2.0",
+		"@sinclair/typebox": "latest",
 		"eslint": "latest",
 		"eslint-config-aerofoil": "workspace:*",
 		"tsconfig": "workspace:*",
@@ -29,7 +29,6 @@
 		"@astrojs/cloudflare": "^7.0.2",
 		"@astrojs/prefetch": "^0.4.0",
 		"@astrojs/sitemap": "^3.0.0",
-		"@sinclair/typebox": "latest",
 		"astro": "^3.0.12"
 	},
 	"eslintConfig": {
