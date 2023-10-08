@@ -1,8 +1,8 @@
 ---
 interface Props {
-	title: string | undefined;
-	description: string | undefined;
-	bodyClass: string;
+	title?: string;
+	description?: string;
+	bodyClass?: string;
 }
 
 const { title, description, bodyClass } = Astro.props;
@@ -15,7 +15,11 @@ const { title, description, bodyClass } = Astro.props;
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta name="generator" content={Astro.generator} />
 		{title != null ? <title>{title}</title> : null}
-		{description != null ? <meta name="description" content={description} /> : null}
+		{
+			description != null ? (
+				<meta name="description" content={description} />
+			) : null
+		}
 	</head>
 	<body class={bodyClass}>
 		<slot />
