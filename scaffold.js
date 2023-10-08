@@ -28,8 +28,8 @@ export async function scaffold({
 
 	let type = null;
 	if (availableDeploymentTypes.length === 1) {
-		logger.info(`Creating deployment without: ${type}`);
 		type = availableDeploymentTypes[0];
+		logger.info(`Creating deployment without: ${type}`);
 	} else if (availableDeploymentTypes.length > 1) {
 		type = await logger.listInput("Select deployment type", [
 			availableDeploymentTypes,
@@ -80,8 +80,28 @@ export async function scaffold({
 					);
 				};
 
+			case "tailwind":
+				dependencies["tailwindcss"] = "latest";
+				dependencies["@astrojs/tailwind"] = "latest";
+				astroIntegrations.push("tailwind()");
+				imports.push('import tailwind from "@astrojs/tailwind";');
+				return async () => {};
+
+			case "sass":
+				devDependencies.sass = "latest";
+				return async () => {};
+
+			case "stylus":
+				devDependencies.stylus = "latest";
+				return async () => {};
+
+			case "less":
+				devDependencies.less = "latest";
+				return async () => {};
+
 			case "none":
 				return async () => {};
+
 			default:
 				throw new Error("Error selecting style");
 		}
@@ -103,7 +123,11 @@ export async function scaffold({
 	//* start scaffolding
 
 	const styleFunc = chooseStyleFunc(
-		await logger.listInput("Select style library", [["none"], ["unocss"]]),
+		await logger.listInput("Select style library", [
+			["none"],
+			["sass", "stylus", "less"],
+			["unocss"],
+		]),
 	);
 
 	const frameworks = (
