@@ -8,7 +8,7 @@
 		"lint:fix": "npx eslint --fix src/**/*.ts",
 		"dev": "aerofoil port-runner \"astro dev --port {port} --host\"",
 		"build": "astro build",
-		"preview": "aerofoil port-runner \"wrangler pages dev ./dist --port {port} --host\"",
+		"preview": "aerofoil port-runner \"wrangler pages dev ./dist --port {port}\"",
 		"start": "aerofoil no-op",
 		"af:deploy": "aerofoil deploy --local-package"
 	},

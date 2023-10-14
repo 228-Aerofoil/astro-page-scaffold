@@ -87,6 +87,7 @@ export async function scaffold({
 				imports.push('import tailwind from "@astrojs/tailwind";');
 				return async () => {};
 
+			case "scss":
 			case "sass":
 				devDependencies.sass = "latest";
 				return async () => {};
@@ -125,8 +126,8 @@ export async function scaffold({
 	const styleFunc = chooseStyleFunc(
 		await logger.listInput("Select style library", [
 			["none"],
-			["sass", "stylus", "less"],
-			["unocss"],
+			["sass", "scss", "stylus", "less"],
+			["unocss", "tailwind"],
 		]),
 	);
 
