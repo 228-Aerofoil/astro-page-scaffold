@@ -56,12 +56,12 @@ export async function scaffold({
 	function chooseStyleFunc(styleOption) {
 		switch (styleOption) {
 			case "unocss":
-				imports.push('import unoCSS from "unocss/vite";');
-				vitePlugins.push("unoCSS()");
-				devDependencies.unocss = "^0.55.4";
-				devDependencies["@unocss/preset-web-fonts"] = "^0.55.4";
-				devDependencies["@unocss/preset-wind"] = "^0.55.4";
-				devDependencies["@unocss/reset"] = "^0.55.4";
+				imports.push('import UnoCSS from "unocss/astro";');
+				astroIntegrations.push("UnoCSS({ injectReset: true })");
+				devDependencies.unocss = "^0.57.1";
+				devDependencies["@unocss/preset-web-fonts"] = "^0.57.1";
+				devDependencies["@unocss/preset-wind"] = "^0.57.1";
+				devDependencies["@unocss/reset"] = "^0.57.1";
 				return async () => {
 					await fs.copy(
 						path.resolve(sourceDirectory, "..", "extras", "uno.config.ts"),
@@ -124,10 +124,10 @@ export async function scaffold({
 	//* start scaffolding
 
 	const styleFunc = chooseStyleFunc(
-		await logger.listInput("Select style library", [
-			["none"],
-			["sass", "scss", "stylus", "less"],
-			["unocss", "tailwind"],
+		await logger.multiSelectInput("Select style library", [
+			{ name: "none", value: "none" },
+			// ["sass", "scss", "stylus", "less"],
+			// ["unocss", "tailwind"],
 		]),
 	);
 

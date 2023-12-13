@@ -4,11 +4,11 @@
 	"private": true,
 	"scripts": {
 		"typecheck": "tsc --noEmit",
-		"lint": "npx eslint src/**/*.ts",
-		"lint:fix": "npx eslint --fix src/**/*.ts",
+		"lint": "npx eslint src/**/* --ext .ts,.tsx,.astro",
+		"lint:fix": "npx eslint --fix src/**/* --ext .ts,.tsx,.astro",
 		"dev": "aerofoil port-runner \"astro dev --port {port} --host\"",
 		"build": "astro build",
-		"preview": "aerofoil port-runner \"wrangler pages dev ./dist --port {port}\"",
+		"preview": "aerofoil port-runner \"astro preview --port {port}\"",
 		"start": "aerofoil no-op",
 		"af:deploy": "aerofoil deploy --local-package"
 	},
